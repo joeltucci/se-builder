@@ -22,9 +22,9 @@ import com.sebuilder.interpreter.TestRun;
 public class TextPresent implements Getter {
 	@Override
 	public String get(TestRun ctx) {
-		return "" + ctx.driver().findElementByTagName("html").getText().contains(ctx.string("text"));
+		return "" + ctx.driver().findElementByTagName("html").getText().contains(ctx.string(cmpParamName()));
 	}
 
 	@Override
-	public String cmpParamName() { return null; }
+	public String cmpParamName() { return "text"; }
 }

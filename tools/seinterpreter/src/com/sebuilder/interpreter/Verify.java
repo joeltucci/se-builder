@@ -29,10 +29,6 @@ public class Verify implements StepType {
 	
 	@Override
 	public boolean run(TestRun ctx) {
-		String got = getter.get(ctx);
-		boolean result = getter.cmpParamName() == null
-				? Boolean.parseBoolean(got)
-				: ctx.string(getter.cmpParamName()).equals(got);
-		return result != ctx.currentStep().isNegated();
-	}
+        return MatcherType.findMatcherType(getter,ctx).matchText(getter,ctx);
+    }
 }

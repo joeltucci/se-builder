@@ -45,9 +45,6 @@ public class WaitFor implements StepType {
 	}
 	
 	private boolean test(TestRun ctx) {
-		String got = getter.get(ctx);
-		return getter.cmpParamName() == null
-				? Boolean.parseBoolean(got)
-				: ctx.string(getter.cmpParamName()).equals(got);
-	}
+        return MatcherType.findMatcherType(getter,ctx).matchText(getter,ctx);
+    }
 }
